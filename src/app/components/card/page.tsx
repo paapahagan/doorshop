@@ -1,9 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState } from "react";
 
 export default function Card() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
 
   const products = [
     {
@@ -20,21 +24,21 @@ export default function Card() {
     {
       id: 2,
       name: "Interior Doors",
-      image: "./doors/2.jpeg",
+      image: "/doors/2.jpeg",
       price: "From $299",
       features: ["Modern designs", "Various materials", "Easy installation"],
     },
     {
       id: 3,
       name: "Patio Doors",
-      image: "./doors/3.jpeg",
+      image: "/doors/3.jpeg",
       price: "From $899",
       features: ["Energy efficient", "Security locks", "Smooth operation"],
     },
     {
       id: 4,
       name: "Garage Doors",
-      image: "./doors/4.jpeg",
+      image: "/doors/4.jpeg",
       price: "From $799",
       features: ["Automatic openers", "Insulated options", "Smart home ready"],
     },
@@ -59,10 +63,12 @@ export default function Card() {
               key={product.id}
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
             >
-              <div className="h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
-                <img
+              <div className="h-48 bg-gray-200 flex items-center justify-center overflow-hidden relative">
+                <Image
                   src={product.image}
                   alt={product.name}
+                  width={400}
+                  height={300}
                   className="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
                   onClick={() =>
                     setSelectedImage({ src: product.image, alt: product.name })
@@ -111,9 +117,11 @@ export default function Card() {
               >
                 ×
               </button>
-              <img
+              <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
+                width={800}
+                height={600}
                 className="max-w-full max-h-full object-contain rounded-lg"
                 onClick={(e) => e.stopPropagation()}
               />
