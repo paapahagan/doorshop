@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { Star, Grid, List, Search } from "lucide-react";
 
 const ProductsPage = () => {
@@ -9,7 +10,10 @@ const ProductsPage = () => {
   const [sortBy, setSortBy] = useState("name");
   const [viewMode, setViewMode] = useState("grid");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
 
   const products = [
     {
@@ -49,7 +53,6 @@ const ProductsPage = () => {
       description:
         "Contemporary steel entry door with sleek design and superior security.",
       badge: "New",
-
       inStock: true,
     },
     {
@@ -318,10 +321,12 @@ const ProductsPage = () => {
   const ProductCard = ({ product }: { product: Product }) => (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
       <div className="relative">
-        <div className="h-64 bg-gray-200 flex items-center justify-center">
-          <img
+        <div className="h-64 bg-gray-200 flex items-center justify-center overflow-hidden">
+          <Image
             src={product.image}
             alt={product.name}
+            width={400}
+            height={300}
             className="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() =>
               setSelectedImage({ src: product.image, alt: product.name })
@@ -406,10 +411,12 @@ const ProductsPage = () => {
   const ProductListItem = ({ product }: { product: Product }) => (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <div className="flex">
-        <div className="w-48 h-32 bg-gray-200 flex items-center justify-center flex-shrink-0 overflow-hidden">
-          <img
+        <div className="w-48 h-32 bg-gray-200 flex items-center justify-center flex-shrink-0 overflow-hidden relative">
+          <Image
             src={product.image}
             alt={product.name}
+            width={192}
+            height={128}
             className="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() =>
               setSelectedImage({ src: product.image, alt: product.name })
@@ -483,10 +490,10 @@ const ProductsPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r  py-20 from-purple-400 to-purple-600 text-white shadow-sm">
+      <div className="bg-gradient-to-r py-20 from-purple-400 to-purple-600 text-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h1 className="text-3xl font-bold ">Our Products</h1>
-          <p className=" mt-2">
+          <h1 className="text-3xl font-bold">Our Products</h1>
+          <p className="mt-2">
             Discover our complete range of premium doors for every need
           </p>
         </div>
@@ -670,9 +677,11 @@ const ProductsPage = () => {
             >
               ×
             </button>
-            <img
+            <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
+              width={800}
+              height={600}
               className="max-w-full max-h-full object-contain rounded-lg"
               onClick={(e) => e.stopPropagation()}
             />
