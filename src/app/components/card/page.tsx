@@ -83,7 +83,7 @@ export default function Card() {
                   {product.name}
                 </h3>
                 <p className="text-2xl font-bold text-blue-600 mb-4">
-                  {product.price}
+                  {/* {product.price} */}
                 </p>
                 <ul className="space-y-2 mb-4">
                   {product.features.map((feature, index) => (

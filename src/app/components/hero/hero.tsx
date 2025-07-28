@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="bg-gradient-to-r  py-20 from-purple-400 to-purple-600 text-white"
+      className="bg-gradient-to-r  py-20 from-purple-400 to-gray-800 text-white"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">

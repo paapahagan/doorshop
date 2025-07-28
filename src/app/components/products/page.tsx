@@ -6,7 +6,7 @@ import { Star, Grid, List, Search } from "lucide-react";
 
 const ProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [priceRange, setPriceRange] = useState("all");
+  // const [priceRange, setPriceRange] = useState("all");
   const [sortBy, setSortBy] = useState("name");
   const [viewMode, setViewMode] = useState("grid");
   const [searchTerm, setSearchTerm] = useState("");
@@ -265,13 +265,13 @@ const ProductsPage = () => {
     },
   ];
 
-  const priceRanges = [
-    { id: "all", name: "All Prices" },
-    { id: "under500", name: "Under $500" },
-    { id: "500-1000", name: "$500 - $1,000" },
-    { id: "1000-1500", name: "$1,000 - $1,500" },
-    { id: "over1500", name: "Over $1,500" },
-  ];
+  // const priceRanges = [
+  //   { id: "all", name: "All Prices" },
+  //   { id: "under500", name: "Under $500" },
+  //   { id: "500-1000", name: "$500 - $1,000" },
+  //   { id: "1000-1500", name: "$1,000 - $1,500" },
+  //   { id: "over1500", name: "Over $1,500" },
+  // ];
 
   const sortOptions = [
     { id: "name", name: "Name" },
@@ -290,18 +290,18 @@ const ProductsPage = () => {
       )
         return false;
 
-      switch (priceRange) {
-        case "under500":
-          return product.price < 500;
-        case "500-1000":
-          return product.price >= 500 && product.price <= 1000;
-        case "1000-1500":
-          return product.price >= 1000 && product.price <= 1500;
-        case "over1500":
-          return product.price > 1500;
-        default:
-          return true;
-      }
+      // switch (priceRange) {
+      //   case "under500":
+      //     return product.price < 500;
+      //   case "500-1000":
+      //     return product.price >= 500 && product.price <= 1000;
+      //   case "1000-1500":
+      //     return product.price >= 1000 && product.price <= 1500;
+      //   case "over1500":
+      //     return product.price > 1500;
+      //   default:
+      //     return true;
+      // }
     })
     .sort((a, b) => {
       switch (sortBy) {
@@ -378,7 +378,7 @@ const ProductsPage = () => {
         <p className="text-gray-600 text-sm mb-4">{product.description}</p>
 
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <span className="text-2xl font-bold text-blue-600">
               ${product.price}
             </span>
@@ -387,7 +387,7 @@ const ProductsPage = () => {
                 ${product.originalPrice}
               </span>
             )}
-          </div>
+          </div> */}
         </div>
 
         <ul className="space-y-1 mb-4">
@@ -553,7 +553,7 @@ const ProductsPage = () => {
               </div>
 
               {/* Price Range */}
-              <div className="mb-6">
+              {/* <div className="mb-6">
                 <h4 className="text-sm font-medium text-gray-700 mb-3">
                   Price Range
                 </h4>
@@ -574,7 +574,7 @@ const ProductsPage = () => {
                     </label>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
