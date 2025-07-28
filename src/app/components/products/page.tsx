@@ -265,14 +265,6 @@ const ProductsPage = () => {
     },
   ];
 
-  // const priceRanges = [
-  //   { id: "all", name: "All Prices" },
-  //   { id: "under500", name: "Under $500" },
-  //   { id: "500-1000", name: "$500 - $1,000" },
-  //   { id: "1000-1500", name: "$1,000 - $1,500" },
-  //   { id: "over1500", name: "Over $1,500" },
-  // ];
-
   const sortOptions = [
     { id: "name", name: "Name" },
     { id: "price-low", name: "Price: Low to High" },
@@ -302,6 +294,7 @@ const ProductsPage = () => {
       //   default:
       //     return true;
       // }
+      return true;
     })
     .sort((a, b) => {
       switch (sortBy) {
@@ -377,8 +370,8 @@ const ProductsPage = () => {
 
         <p className="text-gray-600 text-sm mb-4">{product.description}</p>
 
-        <div className="flex items-center justify-between mb-4">
-          {/* <div className="flex items-center">
+        {/* <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center">
             <span className="text-2xl font-bold text-blue-600">
               ${product.price}
             </span>
@@ -387,8 +380,8 @@ const ProductsPage = () => {
                 ${product.originalPrice}
               </span>
             )}
-          </div> */}
-        </div>
+          </div>
+        </div> */}
 
         <ul className="space-y-1 mb-4">
           {product.features.slice(0, 3).map((feature, index) => (
