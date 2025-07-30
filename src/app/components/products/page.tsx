@@ -206,7 +206,7 @@ const ProductsPage = () => {
       id: 11,
       name: "Carriage Style Garage Door",
       category: "garage",
-      price: 1299,
+      // price: 1299,
       rating: 4.7,
       reviews: 67,
       image: "/doors/11.jpeg",
@@ -272,42 +272,41 @@ const ProductsPage = () => {
     { id: "rating", name: "Rating" },
   ];
 
-  const filteredProducts = products
-    .filter((product) => {
-      if (selectedCategory !== "all" && product.category !== selectedCategory)
-        return false;
-      if (
-        searchTerm &&
-        !product.name.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-        return false;
+  const filteredProducts = products.filter((product) => {
+    if (selectedCategory !== "all" && product.category !== selectedCategory)
+      return false;
+    if (
+      searchTerm &&
+      !product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+      return false;
 
-      // switch (priceRange) {
-      //   case "under500":
-      //     return product.price < 500;
-      //   case "500-1000":
-      //     return product.price >= 500 && product.price <= 1000;
-      //   case "1000-1500":
-      //     return product.price >= 1000 && product.price <= 1500;
-      //   case "over1500":
-      //     return product.price > 1500;
-      //   default:
-      //     return true;
-      // }
-      return true;
-    })
-    .sort((a, b) => {
-      switch (sortBy) {
-        case "price-low":
-          return a.price - b.price;
-        case "price-high":
-          return b.price - a.price;
-        case "rating":
-          return b.rating - a.rating;
-        default:
-          return a.name.localeCompare(b.name);
-      }
-    });
+    // switch (priceRange) {
+    //   case "under500":
+    //     return product.price < 500;
+    //   case "500-1000":
+    //     return product.price >= 500 && product.price <= 1000;
+    //   case "1000-1500":
+    //     return product.price >= 1000 && product.price <= 1500;
+    //   case "over1500":
+    //     return product.price > 1500;
+    //   default:
+    //     return true;
+    // }
+    return true;
+  });
+  // .sort((a, b) => {
+  //   switch (sortBy) {
+  //     case "price-low":
+  //       return a.price - b.price;
+  //     case "price-high":
+  //       return b.price - a.price;
+  //     case "rating":
+  //       return b.rating - a.rating;
+  //     default:
+  //       return a.name.localeCompare(b.name);
+  //   }
+  // });
 
   type Product = (typeof products)[number];
 
@@ -422,7 +421,7 @@ const ProductsPage = () => {
             <h3 className="text-xl font-semibold text-gray-900">
               {product.name}
             </h3>
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <span className="text-2xl font-bold text-blue-600">
                 ${product.price}
               </span>
@@ -431,7 +430,7 @@ const ProductsPage = () => {
                   ${product.originalPrice}
                 </span>
               )}
-            </div>
+            </div> */}
           </div>
 
           <div className="flex items-center mb-2">
@@ -483,7 +482,7 @@ const ProductsPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r py-20 from-purple-400 to-purple-600 text-white shadow-sm">
+      <div className="bg-gradient-to-r  py-20 from-purple-400 to-gray-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <h1 className="text-3xl font-bold">Our Products</h1>
           <p className="mt-2">
